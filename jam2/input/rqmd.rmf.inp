@@ -1,0 +1,42 @@
+# This is an example for RQMD.RMF mode
+
+Main:numberOfEvents = 100  ! number of events to generate
+
+Cascade:bwFileName1=/home/ynara/lib/BWintjam2a.dat
+Cascade:bwFileName2=/home/ynara/lib/BWintjam2b.dat
+
+Random:setSeed = on
+Random:seed = 3668752
+
+Cascade:TimeStepSize = 0.10
+Cascade:TimeStep = 200
+
+MeanField:mode=14
+MeanField:EoS= 32
+MeanField:potentialType = 3
+
+111:mayDecay = off    ! pi0
+221:mayDecay = off    ! eta
+311:mayDecay = off    ! K0
+321:mayDecay = off    ! K+
+#333:mayDecay = off    ! phi
+3122:mayDecay = off   ! Lambda0
+3212:mayDecay = off   ! Sigma0
+3112:mayDecay = off   ! Sigma-
+3222:mayDecay = off   ! Sigma+
+3322:mayDecay = off   ! Xi0
+3312:mayDecay = off   ! Xi-
+3334:mayDecay = off   ! Omega-
+
+Beams:beamA = 197Au
+Beams:beamB = 197Au
+Beams:eCM = 11.5
+
+#Beams:beamA = 208Pb
+#Beams:beamB = 208Pb
+#Beams:eLab = 158  # plab = 158GeV
+
+Beams:bmin = 4.6
+Beams:bmax = 9.4
+
+

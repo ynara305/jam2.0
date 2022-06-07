@@ -1,0 +1,57 @@
+
+2019/6/29 pythia8235/share/Pythia8/xmldoc/ParticleData.xml
+<particle id="9000211" name="a_0(980)+"
+ <channel onMode="1" bRatio="0.1000000" products="321 -311"/>
+
+
+Pythia.h:  //ynara
+
+add:
+  void setBeam(int id1, int id2,double m1, double m2) {
+      idA=id1; idB=id2; mA=m1; mB=m2;
+  }
+
+
+PhaseSpace.h:  //ynara
+
+   void newECM(double eCMin) {eCM = eCMin; s = eCM * eCM;}
+->
+   void newECM(double eCMin) {eCM = eCMin; s = eCM * eCM;
+    idA  = beamAPtr->id();
+    idB  = beamBPtr->id();
+    mA   = beamAPtr->m();
+    mB   = beamBPtr->m();
+  }
+
+2019/6/28
+bool PhaseSpace2to2diffractive::trialKin( bool, bool ) {
+
+    //ynara
+    // Masses of particles and minimal masses of diffractive states.
+    double mPi = particleDataPtr->m0(211);
+    m3ElDiff = (isDiffA) ? mA + mPi : mA;
+    m4ElDiff = (isDiffB) ? mB + mPi : mB;
+    s1       = mA * mA;
+    s2       = mB * mB;
+    s3       = pow2( m3ElDiff);
+    s4       = pow2( m4ElDiff);
+    //ynara-
+
+
+
+
+ProcessContainer.h:  //ynara
+  void newECM(double eCM) {phaseSpacePtr->newECM(eCM);}
+->
+  void newECM(double eCM) {phaseSpacePtr->newECM(eCM);
+                           sigmaProcessPtr->newBeam();}
+
+SigmaProcess.h:  //ynara
+
+add:
+  void newBeam() {
+      idA = beamAPtr->id();
+      idB = beamBPtr->id();
+      mA = beamAPtr->m();
+      mB = beamBPtr->m();
+  }

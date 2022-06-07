@@ -1,0 +1,48 @@
+Specify the path and compile options such as:
+
+export Pythia8="$HOME/lib/pythia8"
+export CXXFLAGS="-march=native -mtune=native -O3 -pipe -g -Wall -mfpmath=both -fbounds-check"
+
+some complier needs the option -std=c++11 or
+
+Insall Pythia8 to your preferred directory:
+./configure --prefix=$HOME/lib/pythia8
+make install
+
+Then go to JAM source directory and do
+  ./configure
+
+
+For technical users in case you changed "configure.ac" or got the
+source from git repository, "configure" and related configurations
+need to be generated.  First, you need to make sure that "autoconf",
+"automake" and "libtool" are installed in the system:
+
+  sudo apt install autoconf automake libtool         # Ubuntu / Debian       
+  sudo pacman -Sy --needed autoconf automake libtool # Arch Linux            
+  sudo dnf install autoconf automake libtool         # Fedora / RHEL / CentOS
+
+  # Instead, they can also be installed by a package group as
+
+  sudo apt install build-essentials                  # Ubuntu / Debian
+  sudo pacman -Sy --needed base-devel                # Arch Linux
+  sudo dnf group install 'Development Tools'         # Fedora / RHEL / CentOS
+
+Next, "configure" for jam2 can be generated and executed by
+
+  ./autogen
+
+  # or
+  autoreconf -i
+  ./configure
+
+  # or
+  aclocal
+  autoheader
+  automake -a
+  autoconf
+  libtoolize
+  ./configure
+
+Note: "libtoolize" copies the libtool script (ltmain.sh) which
+corresponds to the libtool of your system.

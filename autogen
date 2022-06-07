@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+dir=`dirname $0`
+if [ "$dir" = "" ]; then
+	dir="."
+fi
+cd "$dir"
+aclocal		      # creates aclocal.m4
+autoheader	      # creates config.h.in
+automake -a	      # creates Makefile.in files
+autoconf	      # creates the configure script
+libtoolize            # creates ltconfig and ltmain.sh
+exec ./configure $@   # creates Makefile files and config.h

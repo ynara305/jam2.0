@@ -1,0 +1,194 @@
+Main:numberOfEvents = 1  ! number of events to generate
+Main:timesAllowErrors = 100     ! how many aborts before run stops
+Random:setSeed = on
+
+Beams:zseparation = 1.0;
+
+Random:seed 12245
+#Random:seed = 3749508
+
+Check:Debug = 1
+Cascade:PrintCollision = 0
+Cascade:PrintDisplay = 0
+Cascade:displayScale = 2.0
+Next:numberShowEvent = 0           ! print event record n times
+#Print:quiet = off
+Init:showChangedParticleData = 0
+
+Cascade:bwFileName1=/export/ynara/lib/BWintjam2a.dat
+Cascade:bwFileName2=/export/ynara/lib/BWintjam2b.dat
+
+#Cascade:minCMEnergyPythia = 4.5
+#Cascade:minCMEnergyPythia = 10.0
+#Cascade:minCMEnergyPythia = 30.0
+#Beams:eMinPert = 30
+
+#Cascade:constQCollisionOnly = on
+#Cascade:BBCollisionOnly = on
+#Cascade:noMMCollision = on
+#Cascade:InelasticOnly = on
+#Cascade:optFluctuation = 1
+#Cascade:optFermiMomentum = 0
+
+Cascade:model = 0
+Cascade:optCollisionOrder =5
+Cascade:overSample = 1
+Cascade:boxBoundary=0
+#Cascade:dxCell = 2.53
+#Cascade:dyCell = 2.53
+#Cascade:dzCell = 2.53
+#Cascade:dxCell = 3.0
+#Cascade:dyCell = 3.0
+#Cascade:dzCell = 3.0
+#Cascade:nxCell = 8
+#Cascade:nyCell = 8
+#Cascade:nzCell = 8
+#Cascade:vxCell = 0.25
+#Cascade:vyCell = 0.25
+#Cascade:vzCell = 0.25
+#Cascade:cellExpansionStartTime = 2.6
+# time step can be 1 for the cascade mode
+#Cascade:TimeStepSize = 0.2
+#Cascade:TimeStep = 500
+
+#Cascade:initialCondition = 2 # Angantyr
+#Angantyr:CollisonModel=0
+#Cascade:Decay = off
+
+#Cascade:optDecayPosition = 2
+#Cascade:decayPositionSmearParam = 0.5
+
+#Cascade:PauliBlocking = 0
+#Cascade:optConstQuarkDiffra = 5
+#Cascade:optConstQuarkScatt= 1
+#Cascade:optConstQuarkScattHard= 0
+#Cascade:optCollisionTimeLimit=1
+#Cascade:collisionUpdateFreq = 1
+#Cascade:optBBJAM1 = 1
+#Cascade:optSuppressSoftCollision = 1
+#Cascade:paramSoftCollision = 1.0
+#Cascade:constQuarkDiffractive = true
+#Cascade:softRadiation = false
+
+#meanField:gammaCorrectionGaussian=false
+meanField:mode = 3
+MeanField:EoS = 8
+Cascade:TimeStepSize = 0.05
+Cascade:TimeStep =200
+#Cascade:TimeStepSize = 40
+
+MeanField:twoBodyDistance = 1
+MeanField:twoBodyDistanceMD = 3
+MeanField:stepVelocity = 0.0
+MeanField:dtExpandStartTime = 10.0
+#MeanField:optBaryonCurrent = 1
+
+#MeanField:optDerivative = false
+#MeanField:optP0dev = 0
+#MeanField:optScalarDensity = 1
+#MeanField:optVectorDensity = 0
+#MeanField:optVectorPotential = 1
+#MeanField:optPotential = 2
+#ParticleDecays:potentialHandling=1
+#MeanField:selfInteraction = 0
+#MeanField:optMomPotential = 0
+#MeanField:optRecoverEnergy= 2
+#MeanField:gaussWidth = 1.0
+#MeanField:optPotentialArg = 1
+#MeanField:optVdot = 1
+
+#MeanField:dxCell = 50.0
+#MeanField:dyCell = 50.0
+#MeanField:dzCell = 50.0
+#MeanField:nxCell = 2
+#MeanField:nyCell = 2
+#MeanField:nzCell = 2
+#MeanField:vxCell = 0.0
+#MeanField:vyCell = 0.0
+#MeanField:vzCell = 0.0
+#MeanField:cellExpansionStartTime = 2.6
+
+#Beams:compFrame = lab
+
+# for QMD (Gaussian nucleons)
+#HeavyIon:optSample = 2
+#HeavyIon:histWS = 1
+#HeavyIon:WSR0 = 0.03
+
+Hydro:mode = 0
+Hydro:InitialCondition = 3 # =1: passing time =2: specified by Hydro:StartTime, =3: dynamical.
+Hydro:StartTime = 0.0
+Hydro:OptCoreCorona = 1
+Hydro:OptFluidConversion = 3
+#Hydro:OptFreezeOut = 12
+Hydro:OptFreezeOut = 2
+Hydro:nx = 100
+Hydro:ny = 100
+Hydro:nz = 100
+Hydro:OptTimeLike = 1
+
+
+#Collision:SoftModel = 2
+#BeamRemnants:primordialKTremnant=0.01
+#HadronVertex:kappa = 0.8
+#HadronVertex:mode = 0
+#HadronVertex:smearOn = off
+#HadronVertex:constantTau = off
+
+#ParticleDecays:utRatio = 0.0
+
+#StringZ:aLund = 0.3
+#StringZ:bLund = 0.58
+#StringZ:aLund = 1.3
+#StringZ:bLund = 1.58
+#StringFlav:decupletSup = 1.0
+
+111:mayDecay = off    ! pi0
+221:mayDecay = off    ! eta
+311:mayDecay = off    ! K0
+321:mayDecay = off    ! K+
+#333:mayDecay = off    ! phi
+3122:mayDecay = off   ! Lambda0
+3212:mayDecay = off   ! Sigma0
+3112:mayDecay = off   ! Sigma-
+3222:mayDecay = off   ! Sigma+
+3322:mayDecay = off   ! Xi0
+3312:mayDecay = off   ! Xi-
+3334:mayDecay = off   ! Omega-
+
+#Beams:beamA = p+
+Beams:beamA = 197Au
+Beams:beamB = 197Au
+#Beams:beamA = 40Ca
+#Beams:beamB = 40Ca
+
+#Beams:eCM = 200.0
+#Beams:eCM = 4.86 # 11.6AGeV/c (10.7AGeV)
+Beams:eLab = 10.7
+#Beams:eCM = 19.6
+#Beams:eLab = 1.00
+
+#Beams:beamA = 32S
+#Beams:beamB = 32S
+#Beams:eCM = 19.27
+
+#Beams:beamA = 208Pb
+#Beams:beamB = 208Pb
+#Beams:eLab = 158  # elab = 158GeV
+#Beams:eCM = 2760.0
+#Beams:eCM = 5020.0
+
+Beams:bmin = 2.0
+Beams:bmax = 2.0
+
+#Beams:bmin = 4.0
+#Beams:bmax = 8.0
+
+#Beams:bmin = 6.0
+#Beams:bmax = 6.0
+
+#Analysis:collision = on
+Analysis:timeDependenceFlow = on
+Analysis:printFreq = 2
+Analysis:timeDependenceDensity = on
+

@@ -1,0 +1,208 @@
+
+Main:numberOfEvents = 500  ! number of events to generate
+Main:timesAllowErrors = 100        ! how many aborts before run stops
+Random:setSeed = on
+Beams:zseparation = 1.0;
+Random:seed = 5
+
+Cascade:bwFileName1=/export/ynara/lib/BWintjam2a.dat
+Cascade:bwFileName2=/export/ynara/lib/BWintjam2b.dat
+
+Check:Debug = 0
+Cascade:PrintCollision = 1
+Next:numberShowEvent = 0           ! print event record n times
+#Print:quiet = on
+Init:showChangedParticleData = 0
+
+#Cascade:minCMEnergyPythia = 4.5
+#Cascade:minCMEnergyPythia = 10.0
+#Cascade:minCMEnergyPythia = 30.0
+
+Cascade:InelasticOnly = on
+
+#Cascade:Decay = off
+Cascade:model = 1
+Cascade:TimeStepSize = 100
+Cascade:TimeStep= 1
+Collision::SoftModel = 2
+#Cascade:optConstQuarkScatt= 1
+Cascade:PauliBlocking = 0
+
+#Cascade:optBBJAM2 = 0
+
+#BeamRemnants:primordialKTremnantSoft=0.6
+
+#HadronVertex:kappa = 0.8
+#HadronVertex:mode = 0
+#HadronVertex:smearOn = off
+#HadronVertex:constantTau = off
+
+
+#StringZ:aLund = 0.2
+#StringZ:bLund = 2.00
+#eeTune=1
+#StringZ:aLund = 0.3
+#StringZ:bLund = 0.58
+
+#StringFlav:popcornRate = 0.15
+#StringFlav:decupletSup = 1.0
+#StringFlav:probStoUD = 0.16
+#StringFlav:probQQtoQ = 0.05
+#StringFlav:probStoUD = 0.18
+
+#StringFlav:mesonUDL1S0J1 = 0.5
+#StringFlav:mesonUDL1S0J1 = 1.0
+
+#StringFlav:mesonUDL1S1J0 = 1.0
+#StringFlav:mesonUDL1S1J1 = 1.0
+#StringFlav:mesonUDL1S1J2 = 1.0
+
+#StringFlav:mesonSL1S1J0 = 0.5
+#StringFlav:mesonSL1S1J1 = 0.5
+#StringFlav:mesonSL1S1J2 = 0.5
+
+#BeamRemnants:valencePowerDinP = 2.0
+#BeamRemnants:valencePowerUinP = 3.5
+
+
+
+Beams:beamA = p+
+#Beams:beamA = pbar-
+#Beams:beamA =  K-
+Beams:beamB = p+
+
+#Beams:eCM = 4.93  # plab = 12GeV/c
+#Beams:eCM = 6.844  # plab = 24GeV/c
+#Beams:eCM = 6.41  # plab = 20GeV
+#Beams:eCM = 17.27  # plab = 20GeV
+#Beams:pLab = 12.0
+#Beams:pLab = 20.0
+#Beams:pLab = 24.0
+#Beams:pLab = 30.9
+#Beams:pLab = 40.0
+#Beams:pLab = 80.0
+#Beams:pLab = 158.0
+
+Beams:bmin = 0.0
+Beams:bmax = 0.0
+
+
+#TimeShower:pTmin = 0.1
+#SpaceShower:pT0Ref = 0.5
+#Tune:ee = 2
+#Tune:ee = 7
+#Tune:pp = 6
+#Tune:pp = 2 # ok
+
+# see main04.cmd
+! 5) Optionally switch on hand-set cross section and Coulomb term.
+! Note: these values are illustrative only, not to be taken seriously.
+#SigmaTotal:setOwn = on             ! set your own total/elastic/diffr. sigma
+#SigmaTotal:sigmaTot = 40.         ! total cross section (excluding Coulomb)
+#SigmaTotal:sigmaXX = 5.            ! reduce double diffractive cross section
+#SigmaTotal:sigmaAX = 5.            ! reduce double diffractive cross section
+#SigmaTotal:sigmaXB = 5.            ! reduce double diffractive cross section
+#SigmaElastic:setOwn = on           ! suboption for Coulomb term in elastic
+#SigmaElastic:tAbsMin = 4e-5        ! divergence requires lower cutoff
+
+! 6) Optionally select diffractive model.
+#SigmaDiffractive:mode = 2           ! the MBR model for diffraction
+
+! 7) Multiparton interactions and impact parameter picture.
+! Note: these values are illustrative only, not to be taken seriously.
+#MultipartonInteractions:pT0Ref = 2.15
+#MultipartonInteractions:ecmRef = 1800.
+#MultipartonInteractions:ecmPow = 0.19
+#MultipartonInteractions:alphaSvalue=0.135
+#SigmaProcess:alphaSvalue=0.15
+#ColourReconnection:range = 1.5
+#MultipartonInteractions:pT0Ref = 0.94
+#MultipartonInteractions:ecmRef = 17.27
+
+#MultipartonInteractions:ecmPow = 0.1
+#MultipartonInteractions:ecmPow = 0.177
+
+#MultipartonInteractions:pTmin = 0.2
+#MultipartonInteractions:bProfile = 4
+#MultipartonInteractions:coreRadius = 0.4
+#MultipartonInteractions:coreFraction = 0.5
+#MultipartonInteractions:expPow = 1.
+#MultipartonInteractions:enhanceScreening = 2
+
+Init:showMultipartonInteractions = 1
+#BeamRemnants:valencePowerUinP = 3.5
+#BeamRemnants:valencePowerDinP = 2.0
+#BeamRemnants:valenceDiqEnhanceSoft = 4.0
+
+# 158Gev 17.27GeV
+#BeamRemnants:valenceDiqEnhance = 2.0
+#BeamRemnants:valenceDiqEnhanceSoft = 2.0
+
+# 80gev 12.325
+#BeamRemnants:valenceDiqEnhance = 8.0
+#BeamRemnants:valenceDiqEnhanceSoft = 2.0
+
+
+#StringFlav:probQQtoQ = 0.05  ! 0.081
+#Beams:eWidthPert=5.0
+
+#BeamRemnants:probDiffra = 0.1
+#ParticleDecays:gWidth=0.40  ! 0.65
+#ParticleDecays:optDecayAngle=0
+#ParticleDecays:optDeltaDecayAngle=0
+#ParticleDecays:utRatio = 0.0
+#StringFlav:popcornRate = 0.15
+#StringFlav:probQQtoQ = 0.05
+
+#BeamRemnants:valencePowerDinP = 1.0
+#BeamRemnants:valencePowerUinP = 1.0
+
+111:mayDecay = off    ! pi0
+#221:mayDecay = off    ! eta
+#333:mayDecay = off    ! phi
+311:mayDecay = off    ! K0
+
+#321:mayDecay = on    ! K+
+#3122:mayDecay = off   ! Lambda0
+#3212:mayDecay = off   ! Sigma0
+#3112:mayDecay = off   ! Sigma-
+#3222:mayDecay = off   ! Sigma+
+#3322:mayDecay = off   ! Xi0
+#3312:mayDecay = off   ! Xi-
+#3334:mayDecay = off   ! Omega-
+
+#Beams:eCM = 200
+#Beams:pLab = 158    # 17.27 gev
+#Beams:pLab = 80     # 12.325 gev
+#Beams:pLab = 40      # 8.766 gev
+#Beams:pLab = 31       # 7.744 gev
+#Beams:pLab = 24     # 6.844 gev
+#Beams:pLab = 20      # 6.272 gev
+Beams:pLab = 12     # 4.934 gev
+
+#meanField:mode = 3
+#MeanField:EoS = 7
+#Cascade:TimeStepSize = 0.1
+#Cascade:TimeStep =50
+#MeanField:optPotentialArg = 2
+#MeanField:optVdot = 0
+
+#Beams:eMinPert=10.0
+#Beams:eWidthPert=10.0
+#StringFlav:popcornRate = 0.15
+#BeamRemnants:primordialKTremnantSoft=0.6
+#StringFlav:mesonUDL1S0J1 = 0.0
+#BeamRemnants:valenceDiqEnhanceSoft = 2.0
+
+BeamRemnants:probDiffra = 0.8    # 158gev
+#BeamRemnants:probDiffra = 0.45   # 80gev
+#BeamRemnants:probDiffra = 0.35   # 40gev
+#BeamRemnants:probDiffra = 0.33   # 31gev
+#BeamRemnants:probDiffra = 0.24    # 24gev
+#BeamRemnants:probDiffra = 0.20    # 20gev
+BeamRemnants:probDiffra = 0.01    # 12gev
+
+StringFlav:probStoUD = 0.19
+StringFlav:probQQtoQ = 0.042
+
+

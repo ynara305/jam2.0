@@ -1,0 +1,271 @@
+
+Note that if spell is mistaken in the input file, you will get core dump....
+
+============================================================================================
+Cascade part
+============================================================================================
+Cascade:initialCondition = 1
+  1:collision of two nuclei
+  2:Angantyr
+  3:initial condition specified by the user
+
+particle data list can be obtained by the command 
+Pythia8::ParticleData* pdata
+ pdata->listAll();
+
+Cascade:model = 3
+  0: no collisions
+  1: no box. This is faster for light collision system.
+  3: boxes are used for the cascading method
+
+Cascade:optCollisionOrder = 4
+  1: average time of colliding two-particles
+  2: minumum time of colliding two-particles
+  3: maximum time of colliding two-particles
+  4: average time of colliding two-particles collision time of particles is also set to 
+     be the average time: tcol1 = tcol2= (t1 + t2)/2
+  5: minumum time of colliding two-particles collision time of particles is also set to 
+     be the average time: tcol1 = tcol2= min(t1, t2)
+
+  11-15: use Bjorken coordinate tau=sqrt(t^2-z^2) for the ordering.
+  20: Time of collision is defined by the time of closet approach
+      in the observational (computational) frame.
+  21: same as 20 but tau=sqrt(t^2-z^2) is used.
+
+Cascade:OptConstQuarkScatt = 2
+  0: pre-hadrons do not interact.
+  1: only pre-barons with const. quark can inteact.
+  2: pre-hadrons which have original constitnuent quark can interact within
+     their formation time with reduced cross section.
+
+Cascade:BBabsorptionXS = true
+  false: RR->NN process are suppressed.
+
+Cascade:finalDecay = true
+ true: hadron resonances are forced to decay after simulation
+
+Cascade:nuclearClusterFormation = off
+  on: nuclear cluster formation is performed at the end of a simulation
+  with the coalecence paramreters:
+  Cascade:nuclearClusterR = 3.8 fm
+  Cascade:nuclearClusterP = 0.3 GeV/c
+
+============================================================================================
+hydro part
+============================================================================================
+Hydro:mode = false
+  true: include fluid evoution
+
+Cascade:TimeStepSize = 0.15
+
+Cascade:TimeStep = 150
+
+Hydro:InitialCondition = 3
+ =1: passing time
+ =2: specified by Hydro:StartTime
+ =3: dynamical
+
+Hydro:StartTime = 5.0
+
+Hydro:optFluidConversion = 3
+  1: only mesons are convered into fluid
+  2: leading baryons are excluded
+  3: leading hadrons are excluded
+
+Hydro:optHadronCascade=true
+
+Hydro:optCoreCorona = 1
+Hydro:optFluidConversion = 3
+Hydro:optFreezeOut = 11
+Hydro:optConvertParticle = 1
+Hydro:gaussWidth = 0.5
+Hydro:nx = 100
+Hydro:ny = 100
+Hydro:nz = 100
+Hydro:optTimeLike = 1
+Hydro:printFluidFraction=true
+Hydro:optHadronCascade=false
+Hydro:optGaussSmear=0
+Hydro:ParticlizationEnergyDensity=0.5
+Hydro:FluidizationEnergyDensity=0.5
+Hydro:EoSFileName = fluid/eosB235JAMsoft.dat
+
+============================================================================================
+Mean-field part
+============================================================================================
+
+MeanField:mode = 0
+  0:  No mean-field
+  1:  fully non-relativistic QMD 
+  2:  scalar potential implementation of Skyrme force (RQMDs mode)
+  3:  vector potential implementation of Skyrme force (RQMDv mode)
+  4:  scalar-vector  model (RQMDsv mode)
+  5:  nonlinear sigma-omega model (RQMDw mode)
+ 11:  fully non-relativistic QMD  with expanding box
+ 12:  scalar potential implementation of Skyrme force (RQMDs mode) with expanding box
+ 13:  vector potential implementation of Skyrme force (RQMDv mode) with expanding box
+ 14:  scalar-vector potential (RQMDsv mode) with expanding box
+ 21:  BUU with Gaussian density (GBUU mode)
+ 22:  scalar Skyrme potential model RQMD/S in 2005 (RQMDs0 mode)
+
+MeanField:potentialType = 2  when MeanField:mode = 1,4,11,14.
+  =0:Non-relativistic
+  =1:Skyrme scalar
+  =2:Skyrme vector
+  =3:scalar + nonlinear vector potential (M I Gorenstein, D H Rischke, et.al JPG 19(1993)L69)
+  =4:nonlinear scalar potential + vector
+  =5 nonlinear sigma-omega
+
+MeanField:EoS
+  1: Skyrme Hard EoS K=380 MeV
+  2: Skyrme Soft EoS K=200 MeV
+  3: momentum dependent Skyrme hard EoS K=370 MeV (Ohnishi2015) when mode=1 or 12
+  4: momentum dependent Skyrme hard EoS K=380 MeV (Nara2019) when mode=2
+
+  RQMDv: Skyrme Vector
+  11: MH2 2-range Skyrme + MD K=380MeV
+  12: MS2 2-range Skyrme + MD K=210MeV
+  22: MH2 3-range Skyrme + MD K=380MeV
+  23: MM2 3-range SKyrme + MD K=295MeV
+  24: MS2 3-range Skyrme + MD K=210MeV
+
+ when MeanField:mode = 4,14: RQMD.RMF mode
+  31: NS1
+  32: NS2
+  33: MD1
+  34: MD2
+  35: MD4
+
+MeanField:optPotential = 1
+  1: only formed baryons feel potentials.
+  2: baryons containing original constituent quarks can feel potentials within
+     a formation time.
+
+MeanField:optPotentialArg = 2
+  Treatment of momenta of particles in the evaluation of potentials.
+  0: kinetic momenta is used
+  1: free mass is used
+  2: free mass and canonical momenta is used
+
+MeanField:twoBodyDistance = 3
+  1: non-relativistic  (can be used as a distance in the Global CM frame)
+  2: two body CM frame.
+  3: rest frame of particle j
+
+MeanField:twoBodyDistanceMD = 2
+ The definition of relative momentum in the momentum-dependent potential
+  1: non-relativistic  (can be used as a distance in the Global CM frame)
+  2: two body CM frame.
+  3: rest frame of particle j
+
+MeanField:optScalarDensity = 0
+  The definition of scalar density used for the scalar potential.
+  0:  rho_s(i) = sum_j m_j / e_j gamma_{ij} exp(-r_{ij}^2/w)
+  1:  rho_s(i) = sum_j exp(-r_{ij}^2/w)   (RQMD/S)
+
+Note that option 1 and MeanField:twoBodyDistance=3 yields 0 because
+gamma factor cancels: gamma = e_j / m_j 
+
+MeanField:optVectorDensity = 1
+ 0: gamma factor is not included in the Gaussian in density.
+ 1: gamma factor is included in the Gaussian in density.
+
+MeanField:optVectorPotential = 1
+  1: 4-components of vector potential is fully included
+  2: only time-component of vector potential is included
+  3: only time-component of vector potential is included in the form V(rho_B)
+     where rho_B is an invariant baryon density.
+  4: fully non-relativistic
+
+MeanField:optVdot =  0
+  0: all momenta are canonical.
+  1: canonical momenta are used for the evaluation of forces,
+   after update canonical momenta, set kinetic momenta.
+  2: compute time derivatives of vector potential V_i^\mu numerically.
+  3: compute time derivatives of vector potential analytically.
+
+MeanField:optP0dev = 1
+ 0: No
+ 1: include derivative of p0=\sqrt{m^2 + p^2}
+
+MeanField:optDerivative = true
+ true:  include the derivatives of m_i/p_i in the scalar density, and p_i/p_0 in the vector current.
+ false: no
+ 
+MeanField:optMomPotential = 1
+ 0: argument of momentum dependent potential is the 4-distance; (p_i-p_j).
+ 1: argument of momentum dependent potential is the distance specified
+    by MeanField:twoBodyDistance
+
+MeanField:optBaryonCurent = 0
+ 0: baryon current is defined by \int p^mu/p0 f(x,p)
+ 1: baryon current is defined by \int v f(x,p)
+    where v = \partial H /\partial p
+
+MeanField:selfInteraction = 0
+ This option is implemented only in non-relativisitc QMD mode. (not RQMDs, RQMDv)
+ 0: self-intereaction is not included
+ 1: self-interaction is included
+
+MeanField:optRecoverEnergy = 0
+ 0: no
+ 1: at every time step, total energy of the system is recovered by iteration
+    by changing momentum of all particles.
+ 2: the momenta of only those particles interacting with potentials are change.
+
+MeanField:gammaCorrectionGaussian = true
+  true:  the width of the beam direction of the Gaussian is corrected by the
+         gamma factor when non-relativistic distance is used.
+  false: no
+ 
+HeavyIon:optSample = 1
+ 1: Woods-Saxon
+ 2: Hard sphere  for QMD mode  ( when gaussian width of L= 1 fm^2 is
+ used in QMD mode, sampling of particle with an appropriate hard sphere
+ is found to yield the good density profile.
+
+HeavyIon:WSR0 = 0.03
+ This is used for HeavyIon:optSample = 2. This default value
+ shows a good density profile for Au and Pb.
+ I have not checked other nuclei.
+
+MeanField:optStrangeBaryonPotential=0
+  =0: all strange baryons feels the Lambda potential
+  =1:sigma baryons and thier resonances feels the potential specified by the factors
+  MeanField:factorWidthS=1.0
+  MeanField:factorAlphaPotentialS=1.0
+  MeanField:factorBetaPotentialS=1.0
+  MeanField:factorGammaPotentialS=1.0
+  MeanField:factorAttMomPotentialS=1.0
+  MeanField:factorRepMomPotentialS=1.0
+
+MeanField:optLambdaPotential=0
+ =0: same potential form as nucleons but strength is controlled by 
+  Parameters for the multiplication factors for Hyperon potential:
+  MeanField:factorWidthL=1.0
+  MeanField:factorAlphaPotentialL=1.0
+  MeanField:factorBetaPotentialL=1.0
+  MeanField:factorGammaPotentialL=1.0
+  MeanField:factorAttMomPotentialL=1.0
+  MeanField:factorRepMomPotentialL=1.0
+
+ =1: 2+3BF upper
+ =2: 2+3BF lower
+ =3: 2BF   upper
+ =4: 2BF   lower
+ =5: GKW3 2+3BF average
+ =6: GKW2 2BF average
+ =7: GKW3 + Kohno (MD) mu1 fixed
+ =8: GKW2 + Kohno (MD) mu1 fixed
+ =9: 2+3BF Kohno + Kohno (MD) mu1 fixed
+ =10:2BF Kohno + Kohno (MD) mu1 fixed
+ =11: GKW3 + Kohno (MD)
+ =12: GKW2 + Kohno (MD)
+ =13: 2+3BF Kohno + Kohno (MD)
+ =14:2BF Kohno + Kohno (MD)
+
+MeanField:optPotentialDensity=0
+  0:poentials depend on nucleon density
+  1:poentials depend on vector density
+
+

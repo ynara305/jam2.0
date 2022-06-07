@@ -1,0 +1,3 @@
+This code simulates high energy nuclear collisions based on the transport theoretical models. 
+Models include hadronic cascade model, relativistic quantum molecular dynamics (RQMD.RMF, RQMDs, RQMDv), and hydrodynamics.
+Hybrid simulation of hydrodynamics + cascade model is available.
